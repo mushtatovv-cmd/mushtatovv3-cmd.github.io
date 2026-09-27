@@ -1,0 +1,168 @@
+/* ==========================================================
+   MOBILE FIRST: базовые правила — для смартфонов.
+   Правила для планшетов и десктопов подключаются ниже через
+   media query.
+   ========================================================== */
+
+/* ===== Общие настройки ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== Шапка (всегда 100% ширины) ===== */
+#site-header {
+    width: 100%;
+    background-color: #2e7d32;
+    color: white;
+    padding: 15px;
+}
+
+#site-header .site-title {
+    margin: 0;
+    padding-top: 10px;
+}
+
+#site-header .logo {
+    float: right;
+    width: 50px;
+    height: 50px;
+}
+
+/* ===== Меню =====
+   Мобильный вариант: вертикальный список на всю ширину */
+#main-nav {
+    width: 100%;
+    background-color: #ef6c00;
+}
+
+#main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-nav a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+}
+
+#main-nav li:last-child a {
+    border-bottom: none;
+}
+
+#main-nav a:hover {
+    background-color: #e65100;
+}
+
+/* ===== Основной контент =====
+   Мобильный вариант: 100% ширины, блоки друг под другом.
+   Таблице задаётся order: -1, поэтому на смартфоне она
+   отображается выше списка ссылок, хотя в HTML идёт после него. */
+.content {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-table {
+    order: -1;
+}
+
+.section-links {
+    order: 0;
+}
+
+.section-form {
+    order: 1;
+}
+
+/* ===== Таблица ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #999;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #ef6c00;
+    color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: #f5f5f5;
+}
+
+/* ===== Подвал (всегда 100% ширины) ===== */
+#site-footer {
+    width: 100%;
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* ==========================================================
+   ПЛАНШЕТЫ И ДЕСКТОПЫ (от 700px)
+   Меню становится горизонтальным и центрированным, контент и
+   меню ограничиваются 960px, порядок блоков возвращается к
+   обычному, как в HTML (список → таблица → форма).
+   ========================================================== */
+@media screen and (min-width: 700px) {
+
+    #main-nav {
+        max-width: 960px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    #main-nav ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #main-nav a {
+        border-bottom: none;
+        border-right: 1px solid #fff;
+    }
+
+    #main-nav li:last-child a {
+        border-right: none;
+    }
+
+    .content {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    .section-table {
+        order: 0;
+    }
+
+    .section-links {
+        order: 0;
+    }
+
+    .section-form {
+        order: 0;
+    }
+}
